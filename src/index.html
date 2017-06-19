@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="styles/app.css">
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarCollapsed">
+                        <span class="glyphicon glyphicon-tasks toggleIcon--modified"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">ZaxidNetClone</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarCollapsed">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#"><span class="glyphicon glyphicon-user"></span>
+                            Автори та статті</a>
+                        </li>
+                        <li><a href="#">Анонси</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <img class="img-rounded navImg" src="images/200x100.png" alt="Avatar">
+                        </li>
+                        <li>
+                            <p class="navbar-text">Привіт, <a href="#" class="navbar-link text--capital">ім'я
+                                користувача</a>
+                            </p>
+                        </li>
+                        <li>
+                            <a href="#"><span class="glyphicon glyphicon-off"></span>
+                                Вийти</a>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="page-header">
+            <h1>Панель управління авторами і статтями</h1>
+        </div>
+    </header>
+    <div class="row">
+        <aside class="col-xs-4">
+            <form id="form-allUsers">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Автори
+                        <a href="#" id="btn-create" type="button"><span class="glyphicon glyphicon-plus"></span></a>
+                        <div class="btn-group btn-group-xs pull-right">
+                            <button class="btn btn-danger" id="delete"><span class="glyphicon glyphicon-trash"></span>
+                                Видалити
+                            </button>
+                            <button class="btn btn-warning"><span class="glyphicon glyphicon-ban-circle"></span>
+                                Забанити
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="media-list list-group" id="ul-parent">
+
+                    </ul>
+                    <div class="panel-footer">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination" id="navigation-parent">
+                                <li>
+                                    <a href="#" class="navigation"><span>&laquo;</span></a>
+                                </li>
+                                <li id="nav-insertBefore">
+                                    <a href="#" class="navigation"><span>&raquo;</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </form>
+        </aside>
+        <main class="col-xs-8">
+            <form name="form_hide" id="form-hide" action="/api/users" method="post">
+                <input type="hidden" name="id" id="id">
+                <div class="row form-group">
+                    <div class="col-xs-6">
+                        <div class="form-group row">
+                            <label for="#photo" class="col-xs-4">Фото</label>
+                            <div class="col-xs-8">
+                                <a href="#" id="#photo"><img src="" alt="Photo"
+                                                             class="thumbnail photoImg" id="img-photo">
+                                    <span class="glyphicon glyphicon-transfer"></span>
+                                    Змінити
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group row">
+                            <label for="fio" class="col-xs-4">ФІО</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="fio">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="birthday" class="col-xs-4">Дата народження</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="birthday" name="birthday">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="type" class="col-xs-4">Країна</label>
+                            <div class="col-xs-8">
+                                <select class="form-control" id="type">
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="profession" class="col-xs-4">Професія</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="profession" name="profession">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-6">
+                        <div class="form-group row">
+                            <label for="address" class="col-xs-4">Адреса</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" id="address" name="address">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="form-group row">
+                            <label for="email" class="col-xs-4">Email</label>
+                            <div class="col-xs-8">
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <div class="field-row">
+                            <label for="short-info">ShortInfo:</label>
+                            <textarea name="short_info" id="short-info"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <div class="field-row">
+                            <label for="full-info">DetailedInfo:</label>
+                            <textarea name="full_info" id="full-info"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-xs-12">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"></span>
+                                Зберегти
+                            </button>
+                            <button class="btn btn-default" id="btn-cancel">Скасувати</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</div>
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
